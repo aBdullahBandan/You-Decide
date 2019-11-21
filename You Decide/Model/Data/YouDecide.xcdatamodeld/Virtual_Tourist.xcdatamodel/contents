@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Geo" representedClassName=".Geo" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="callingCode" optional="YES" attributeType="String"/>
+        <attribute name="continent" optional="YES" attributeType="String"/>
+        <attribute name="contryCode" optional="YES" attributeType="String"/>
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="currencyCode" optional="YES" attributeType="String"/>
+        <attribute name="currencyName" optional="YES" attributeType="String"/>
+        <attribute name="timeZoneCode" optional="YES" attributeType="String"/>
+        <attribute name="timeZoneName" optional="YES" attributeType="String"/>
+        <relationship name="pin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pin" inverseName="geos" inverseEntity="Pin"/>
+    </entity>
+    <entity name="Photo" representedClassName=".Photo" syncable="YES" codeGenerationType="class">
+        <attribute name="photos" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="photosUrl" optional="YES" attributeType="String"/>
+        <relationship name="pin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pin" inverseName="photos" inverseEntity="Pin"/>
+    </entity>
+    <entity name="Pin" representedClassName=".Pin" syncable="YES" codeGenerationType="class">
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="lon" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="geos" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Geo" inverseName="pin" inverseEntity="Geo"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Photo" inverseName="pin" inverseEntity="Photo"/>
+        <relationship name="weathers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Weather" inverseName="pin" inverseEntity="Weather"/>
+    </entity>
+    <entity name="Weather" representedClassName=".Weather" syncable="YES" codeGenerationType="class">
+        <attribute name="temp" optional="YES" attributeType="String"/>
+        <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="today" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="weatherIcon" optional="YES" attributeType="String"/>
+        <attribute name="weatherSumary" optional="YES" attributeType="String"/>
+        <relationship name="pin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pin" inverseName="weathers" inverseEntity="Pin"/>
+    </entity>
+    <elements>
+        <element name="Photo" positionX="-54" positionY="-9" width="128" height="88"/>
+        <element name="Pin" positionX="-352.2890625" positionY="2.49609375" width="128" height="118"/>
+        <element name="Weather" positionX="-46.16015625" positionY="121.19921875" width="128" height="133"/>
+        <element name="Geo" positionX="-198" positionY="108" width="128" height="193"/>
+    </elements>
+</model>
