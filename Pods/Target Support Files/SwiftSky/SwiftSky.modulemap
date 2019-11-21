@@ -1,0 +1,6 @@
+framework module SwiftSky {
+  umbrella header "SwiftSky-umbrella.h"
+
+  export *
+  module * { export * }
+}

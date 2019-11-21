@@ -1,0 +1,6 @@
+framework module Pods_You_Decide {
+  umbrella header "Pods-You Decide-umbrella.h"
+
+  export *
+  module * { export * }
+}
